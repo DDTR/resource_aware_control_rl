@@ -134,17 +134,17 @@ def train(env_id, env, nb_epochs, nb_epoch_cycles, render_eval, reward_scale, re
                     else:
                        if reward_param_type=='const':
                             r_com = 1. # const reward
-                        elif reward_param_type=='linear':
+                       elif reward_param_type=='linear':
                             r_com = (1.0 / (nb_rollout_steps - reward_param_thr)) * (nb_rollout_steps - num_no_com) # linear interp reward
-                        elif reward_param_type=='inv':
+                       elif reward_param_type=='inv':
                             r_com = 1.0 / (1.0 + (np.maximum(num_no_com - reward_param_thr, 0)))  # inv decay reward
-                        else:
+                       else:
                             print('no such reward type!')
                             assert 1==0
 
-                        r_com = reward_param_scaling * r_com
-                        action = np.copy(u_old)
-                        num_no_com += 1
+                       r_com = reward_param_scaling * r_com
+                       action = np.copy(u_old)
+                       num_no_com += 1
 
                     assert action.shape == env.action_space.shape
 
