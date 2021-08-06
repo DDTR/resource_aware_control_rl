@@ -19,6 +19,7 @@ def normalize(x, stats):
 
 
 def denormalize(x, stats):
+    # 反正则
     if stats is None:
         return x
     return x * stats.std + stats.mean
