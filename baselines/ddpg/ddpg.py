@@ -12,6 +12,7 @@ from baselines.common.mpi_running_mean_std import RunningMeanStd
 from mpi4py import MPI
 
 def normalize(x, stats):
+    # 正则化
     if stats is None:
         return x
     return (x - stats.mean) / stats.std
